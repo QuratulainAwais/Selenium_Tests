@@ -1,4 +1,4 @@
-#Selenium4 Number of Sliders using ClassName locator
+#Selenium4 Number of images in a slider using ClassName locator
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
