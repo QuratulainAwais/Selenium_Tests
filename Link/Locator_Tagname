@@ -1,0 +1,21 @@
+#Selenium4 Number of Links using TagName locator
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+driver.get("https://bqsoftplay.com")
+driver.maximize_window()
+time.sleep(2)
+sliders=driver.find_elements(By.TAG_NAME,"a")
+#sliders=driver.find_elements(By.TAG_NAME,"a")
+print(len(sliders))
+
+
+input("Press Enter to close browser...")
+
+
+
