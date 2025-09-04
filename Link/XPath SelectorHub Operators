@@ -1,0 +1,31 @@
+#Selenium4 XPath SelectorHub Operators
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+driver.get("http://bqsoftplay.com")
+driver.maximize_window()
+time.sleep(2)
+#Absolute XPath
+driver.find_element(By.XPATH,"/html/body/div[5]/div/div[2]/div[2]/div[4]/div/div/div/div/div[2]/div[4]/a").click()
+#Relative XPath
+#driver.find_element(By.XPATH,"//*[@id='cmsmasters_button_68b9cd703163b6_00110528']/a").click()
+#OR
+#driver.find_element(By.XPATH,"//*[@id='cmsmasters_button_68b9cd703163b6_00110528' or  @class='']/a").click()
+#AND
+#driver.find_element(By.XPATH,"//*[@id='cmsmasters_button_68b9cd703163b6_00110528' and @class='']/a").click()
+#contains()
+#driver.find_element(By.XPATH,"//input[contains(@id,'search')]").click()
+#starts.with()
+#driver.find_element(By.XPATH,"//input[starts-with(@name,'submit_')]").click()
+#text
+#driver.find_element(By.XPATH,"//a[text()=Women]").click()
+
+input("Press Enter to close browser...")
+
+
+
