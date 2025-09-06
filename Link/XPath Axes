@@ -1,0 +1,43 @@
+#Selenium4 XPath Axes
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+driver.get("https://money.rediff.com/gainers/bse/daily/groupa")
+driver.maximize_window()
+time.sleep(2)
+#XPath Axes - Self Node
+# text_msg=driver.find_element(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/self::a").text
+# print(text_msg)
+#Parent
+# text_msg=driver.find_element(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/parent::td").text
+# print(text_msg)
+#Child
+#child=driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/child::td")
+#print(len(child))
+#ancestor
+# child=driver.find_element(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr").text
+# # print(child)
+#descendant
+# descendants = driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/descendant::*")
+# print(len(descendants))
+#following nodes
+# following_descendants = driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/following::*")
+# print(len(following_descendants))
+#following-sibling
+# following_sibling = driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/following-sibling::*")
+# print(len(following_sibling))
+#preceding
+# precedings = driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/preceding::*")
+# print(len(precedings))
+#preceding-sibling
+precedings_sibling = driver.find_elements(By.XPATH, "//a[contains(text(),'SJS Enterprises')]/ancestor::tr/preceding-sibling::*")
+print(len(precedings_sibling))
+input("Press Enter to close browser...")
+
+
+
