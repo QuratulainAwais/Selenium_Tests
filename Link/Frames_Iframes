@@ -1,0 +1,39 @@
+#Selenium4 Frames/Iframes
+from selenium import webdriver
+from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# driver.get("https://www.selenium.dev/selenium/docs/api/java/index.html?overview-summary.html")
+# driver.maximize_window()
+# time.sleep(2) #lowers the performance
+# #driver.switch_to.frame("packageListFrame")
+# driver.find_element(By.LINK_TEXT,"org.openqa.selenium").click()
+# #switch to the main page
+# #driver.switch_to.default_content()
+# #driver.switch_to.frame("packageFrame")
+# driver.find_element(By.LINK_TEXT,"WebDriver").click()
+# #switch to the main page
+# #driver.switch_to.default_content()
+# #driver.switch_to.frame("classFrame")
+# driver.find_element(By.XPATH,"//*[@id='navbar-top-firstrow']/li[8]/a").click()
+# #switch to the main page
+# #driver.switch_to.default_content()
+#Inner frames
+driver.get("https://demo.automationtesting.in/Frames.html")
+driver.maximize_window()
+driver.find_element(By.XPATH,"/html/body/section/div[1]/div/div/div/div[1]/div/ul/li[2]/a").click()
+Outer_frame=driver.find_element(By.XPATH,"//*[@id='Multiple']/iframe")
+driver.switch_to.frame(Outer_frame)
+Inner_frame=driver.find_element(By.XPATH,"/html/body/section/div/div/iframe")
+driver.switch_to.frame(Inner_frame)
+driver.find_element(By.XPATH,"/html/body/section/div/div/div/input").send_keys("Hello")
+#to go to the parent frame only in selenium 4
+#driver.switch_to.parent_frame()
+input("Press Enter to close browser...")
+
+
