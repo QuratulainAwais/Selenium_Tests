@@ -1,0 +1,34 @@
+#Selenium4 Dropdown
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.select import Select
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import Exception
+
+import time
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https://www.opencart.com/index.php?route=account/register")
+driver.maximize_window()
+
+time.sleep(2) #lowers the performance
+
+drop_down=driver.find_element(By.XPATH,"//select[@id='input-country;]")
+drop_down=Select(drop_down)
+drop_down.select_by_visible_text('India')
+
+#select all options
+alloptions=drop_down.options
+print(len(alloptions))
+for opt in alloptions:
+    print(opt.text)
+#or if you want to select as per conditions
+for opt in alloptions:
+    if opt.text == 'India':
+        opt.clear()
+        break
+input("Press Enter to close browser...")
