@@ -1,0 +1,55 @@
+#Selenium4 Alerts Popup Multiple Browser windows
+#Alert Type 1
+# from selenium import webdriver
+# from selenium.webdriver import Keys
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# import time
+#
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# driver.get("https://the-internet.herokuapp.com/javascript_alerts")
+# driver.maximize_window()
+# time.sleep(2) #lowers the performance
+#
+# #Open Alert window
+# driver.find_element(By.XPATH, "//button[normalize-space()='Click for JS Prompt']").click()
+# #Object representing the whole alert window
+# alert_window=driver.switch_to.alert
+# print(alert_window.text)
+# alert_window.send_keys("Hello World")
+# time.sleep(2)
+# #To click ok button
+# #alert_window.accept()
+# #To click cancel button
+# alert_window.dismiss()
+# input("Press Enter to close browser...")
+
+#Alert Type 2
+from selenium import webdriver
+from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# driver.get("https://mypage.rediff.com/login/dologin")
+# driver.maximize_window()
+# time.sleep(2) #lowers the performance
+#
+# #Open Alert window
+# driver.find_element(By.XPATH, "//input[@value='Login']").click() #Login button
+# alert_window=driver.switch_to.alert
+# alert_window.accept()
+#
+# input("Press Enter to close browser...")
+
+#Authentication Popup
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https:/admin:admin@the-internet.herokuapp.com/basic_auth")
+driver.maximize_window()
+time.sleep(2) #lowers the performance
+
+input("Press Enter to close browser...")
