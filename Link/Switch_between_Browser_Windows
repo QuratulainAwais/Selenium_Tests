@@ -1,0 +1,43 @@
+#Selenium4 Switch b/w Browser Windows
+from selenium import webdriver
+from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https://opensource-demo.orangehrmlive.com")
+driver.maximize_window()
+time.sleep(2) #lowers the performance
+#switch_to.window(WindowID) - Helps in switching windows. Cannot be seen in HTML. Automatically generated/ Dynamic
+#driver.current_window_handle # returns windowID if single browser window
+# #window_handles # Return multiple windowID of multiple browser windows
+# current_WID=driver.current_window_handle
+# print(current_WID)
+driver.find_element(By.LINK_TEXT, "OrangeHRM, Inc").click()
+two_WID=driver.window_handles
+parent=two_WID[0]
+child=two_WID[1]
+driver.switch_to.window(child)
+print('title of the child window', driver.title)
+driver.switch_to.window(parent)
+print('title of the parent window', driver.title)
+# Loop for numerous windows 
+for window_ID in two_WID:
+    driver.switch_to.window(window_ID)
+    print(driver.title)
+    
+#Mulitple windows but now close on special choice
+for window_ID in two_WID:
+    driver.switch_to.window(window_ID)
+    print(driver.title)
+    if driver.title == "OrangeHRM":
+        driver.close()
+        
+
+
+input("Press Enter to close browser...")
+
+
