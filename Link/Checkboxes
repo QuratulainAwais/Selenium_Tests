@@ -1,0 +1,36 @@
+#Selenium4 Checkboxes
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import Exception
+
+import time
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https://www.ironspider.ca/forms/checkradio.htm")
+driver.maximize_window()
+
+time.sleep(2) #lowers the performance
+
+#select specific checkbox
+#driver.find_element(By.XPATH,"//input[@type='checkbox' and contains(@value,'yellow')]").click()
+
+#select all checkboxes
+checkboxes=driver.find_elements(By.XPATH, "//input[@type='checkbox' and contains(@name, 'color')]")
+print(len(checkboxes))
+for i in range(len(checkboxes)):
+     checkboxes[i].click()
+# for checkbox in checkboxes:
+#     color_att=checkbox.get_attribute('value')
+#     if color_att=='red' or color_att=='yellow':
+#         checkbox.click()
+
+#clearing all the checkboxes
+for checkbox in checkboxes:
+    if checkbox.is_selected():
+        checkbox.click()
+
+input("Press Enter to close browser...")
