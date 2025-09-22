@@ -1,0 +1,20 @@
+#Selenium4 Download Files
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+def chrome_setup():
+    from selenium.webdriver.chrome.service import Service
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    return driver
+
+driver = chrome_setup()
+driver.get("https://file-examples.com/index.php/text-files-and-archives-download/")
+driver.maximize_window()
+driver.find_element(By.XPATH, "//*[@id='table-files']/tbody/tr[1]/td[5]/a").click()
+
+time.sleep(2)
+
+input("Press Enter to close browser...")
