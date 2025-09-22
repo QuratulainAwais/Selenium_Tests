@@ -1,0 +1,32 @@
+#Selenium4 Keyboard actions
+from selenium import webdriver
+from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https://text-compare.com/")
+driver.maximize_window()
+
+#Ctrl + A to select
+# #Ctrl + C to copy
+#Tab key to move cursor to second box
+#Ctrl + V to paste
+
+input1=driver.find_element(By.ID, "inputText1")
+input3=driver.find_element(By.ID, "inputText2")
+
+input1.send_keys("welcome to selenium")
+action=ActionChains(driver)
+
+action.key_down(Keys.CONTROL).send_keys("a").key_up(Keys.CONTROL).perform()
+action.key_down(Keys.CONTROL).send_keys("c").key_up(Keys.CONTROL).perform()
+action.send_keys(Keys.TAB).perform()
+action.key_down(Keys.CONTROL).send_keys("v").key_up(Keys.CONTROL).perform()
+
+time.sleep(2)
+
+input("Press Enter to close browser...")
