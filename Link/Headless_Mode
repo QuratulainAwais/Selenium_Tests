@@ -1,0 +1,29 @@
+#Selenium4 Headless Mode
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver import Keys, ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+def chrome_setup():
+    from selenium.webdriver.chrome.service import Service
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless=new")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+    return driver
+
+driver = chrome_setup()
+driver.get("https://demo.nopcommerce.com/")
+driver.maximize_window()
+
+time.sleep(2)
+
+print("Current URL:", driver.current_url)
+
+# Optional: screenshot to verify visually
+driver.save_screenshot("headless_demo.png")
+
+
+input("Press Enter to close browser...")
