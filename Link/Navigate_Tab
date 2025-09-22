@@ -1,0 +1,26 @@
+#Selenium4 Navigate Tab
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver import Keys, ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+
+def chrome_setup():
+    from selenium.webdriver.chrome.service import Service
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    return driver
+
+driver = chrome_setup()
+driver.get("https://demo.nopcommerce.com/")
+driver.maximize_window() #to capture full screen
+# reg=Keys.CONTROL+Keys.RETURN
+# driver.find_element(By.LINK_TEXT,"Register").send_keys(reg)
+driver.switch_to.new_window('window')
+#driver.switch_to.new_window('tab') #just a tab not a new window
+driver.get("http://google.com")
+
+
+time.sleep(2)
+
+input("Press Enter to close browser...")
