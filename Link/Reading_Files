@@ -1,4 +1,4 @@
-#Selenium4 Data driven testing / do not support excel sheets
+#Selenium4 Read Data / do not support excel sheets
 #openpyxl - model to work with excel sheets
 from selenium import webdriver
 import openpyxl
